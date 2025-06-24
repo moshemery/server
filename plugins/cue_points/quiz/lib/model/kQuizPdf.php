@@ -9,7 +9,7 @@
 class kQuizPdf
 {
 	const ASIAN_FONT = 'AsianFont';
-	const NOTO_SANS_FONT = 'notoSansFont';
+       const DEJAVU_SANS_FONT = 'dejaVuSansFont';
 	const TIMES_FONT = 'Times';
 	const NORMAL_STYLE = 'normalStyle';
 	const INDENT_LIST_STYLE = 'indentListStyle';
@@ -18,7 +18,7 @@ class kQuizPdf
 	const TITLE_STYLE = 'titleStyle';
 	const HEADING6_STYLE = 'heading6Style';
 	const ASIAN_STYLE_PREFIX = 'asian';
-	const NOTO_STYLE_PREFIX = 'noto';
+       const DEJAVU_STYLE_PREFIX = 'dejavu';
 
 	/**
 	 * @var PdfGenerator
@@ -57,17 +57,17 @@ class kQuizPdf
 
 		$styles[self::INDENT_LIST_STYLE] = new PdfStyle('IndentList', self::TIMES_FONT, 12, '', false, false, 'L', 5);
 		$styles[self::ASIAN_STYLE_PREFIX.self::INDENT_LIST_STYLE] = new PdfStyle('AsianIndentList', self::ASIAN_FONT,12, '', false, false, 'L', 5);
-		$styles[self::NOTO_STYLE_PREFIX.self::INDENT_LIST_STYLE] = new PdfStyle('NotoIndentList', self::NOTO_SANS_FONT,12, '', false, false, 'L', 5);
+               $styles[self::DEJAVU_STYLE_PREFIX.self::INDENT_LIST_STYLE] = new PdfStyle('DejaVuIndentList', self::DEJAVU_SANS_FONT,12, '', false, false, 'L', 5);
 
 		$styles[self::LIST_WITH_ADD_LINE_BEFORE_STYLE] = new PdfStyle('ListWithAddLineBefore', self::TIMES_FONT, 12, 'I', true);
 		$styles[self::ASIAN_STYLE_PREFIX.self::LIST_WITH_ADD_LINE_BEFORE_STYLE] = new PdfStyle('AsianListWithAddLineBefore', self::ASIAN_FONT, 12,
 			'', true);
-		$styles[self::NOTO_STYLE_PREFIX.self::LIST_WITH_ADD_LINE_BEFORE_STYLE] = new PdfStyle('NotoListWithAddLineBefore', self::NOTO_SANS_FONT,
-			12, 'I', true);
+               $styles[self::DEJAVU_STYLE_PREFIX.self::LIST_WITH_ADD_LINE_BEFORE_STYLE] = new PdfStyle('DejaVuListWithAddLineBefore', self::DEJAVU_SANS_FONT,
+                       12, 'I', true);
 
 		$styles[self::TITLE_STYLE] = new PdfStyle('Title', 'Arial', 14, 'BU', true, false, 'C');
-		$styles[self::NOTO_STYLE_PREFIX.self::TITLE_STYLE] = new PdfStyle('NotoTitle', self::NOTO_SANS_FONT, 14, 'BU', true,
-			false, 'C');
+               $styles[self::DEJAVU_STYLE_PREFIX.self::TITLE_STYLE] = new PdfStyle('DejaVuTitle', self::DEJAVU_SANS_FONT, 14, 'BU', true,
+                       false, 'C');
 		$styles[self::ASIAN_STYLE_PREFIX.self::TITLE_STYLE] = new PdfStyle('AsianTitle', 'Arial', 14, 'U', true, false, 'C');
 
 		$this->styles = $styles;
@@ -85,11 +85,11 @@ class kQuizPdf
 
 	private function initFonts()
 	{
-		$this->pdf->AddFont(self::ASIAN_FONT,'','VL-PGothic-Regular.ttf',true);
-		$this->pdf->AddFont(self::NOTO_SANS_FONT,'','NotoSans-Regular.ttf',true);
-		$this->pdf->AddFont(self::NOTO_SANS_FONT,'B','NotoSans-Bold.ttf',true);
-		$this->pdf->AddFont(self::NOTO_SANS_FONT,'BI','NotoSans-BoldItalic.ttf',true);
-		$this->pdf->AddFont(self::NOTO_SANS_FONT,'I','NotoSans-Italic.ttf',true);
+               $this->pdf->AddFont(self::ASIAN_FONT,'','VL-PGothic-Regular.ttf',true);
+               $this->pdf->AddFont(self::DEJAVU_SANS_FONT,'','DejaVuSans.ttf',true);
+               $this->pdf->AddFont(self::DEJAVU_SANS_FONT,'B','DejaVuSans-Bold.ttf',true);
+               $this->pdf->AddFont(self::DEJAVU_SANS_FONT,'BI','DejaVuSans-BoldOblique.ttf',true);
+               $this->pdf->AddFont(self::DEJAVU_SANS_FONT,'I','DejaVuSans-Oblique.ttf',true);
 	}
 
 	public function createQuestionPdf()
@@ -129,7 +129,7 @@ class kQuizPdf
 
 	private function getStylePrefix($text)
 	{
-		$stylePrefix = self::NOTO_STYLE_PREFIX;
+               $stylePrefix = self::DEJAVU_STYLE_PREFIX;
 		if(is_null($text))
 		{
 			return $stylePrefix;
